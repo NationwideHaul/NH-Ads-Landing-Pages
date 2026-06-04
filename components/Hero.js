@@ -1,4 +1,4 @@
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { PrimaryCTA } from "@/components/CTA";
 import VSLPlayer from "@/components/VSLPlayer";
 import Reveal from "@/components/Reveal";
@@ -6,7 +6,7 @@ import Reveal from "@/components/Reveal";
 // SECTION 1 — HERO. Outcome-led H1 + concrete subhead (with highlighter),
 // momentum badge, single primary CTA + helper microcopy, THEN the autoplaying
 // VSL video directly after the helper line. NO price in the hero.
-export default function Hero() {
+export default function Hero({ copy = defaultCopy }) {
   const h = copy.hero;
   const h1 = h.h1Options[0]; // swap index to A/B test the headline
 

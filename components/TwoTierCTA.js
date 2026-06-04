@@ -1,10 +1,10 @@
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { site } from "@/lib/site";
 import { PrimaryCTA, SecondaryCTA } from "@/components/CTA";
 
 // SECTION 7 — TWO-TIER CTA. Primary "Talk to our team / See it at the yard";
 // Secondary "Get my quote" for buyers ready to move now.
-export default function TwoTierCTA() {
+export default function TwoTierCTA({ copy = defaultCopy }) {
   const t = copy.twoTierCta;
   return (
     <section className="section">

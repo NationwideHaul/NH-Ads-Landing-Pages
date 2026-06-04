@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { ArrowRightIcon } from "@/components/Icons";
 
 // SECTION — GALLERY CAROUSEL. Real trailer photos from /public/images.
@@ -19,7 +19,7 @@ const SLIDES = [
 
 const AUTOPLAY_MS = 4500;
 
-export default function Gallery() {
+export default function Gallery({ copy = defaultCopy }) {
   const g = copy.gallery;
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);

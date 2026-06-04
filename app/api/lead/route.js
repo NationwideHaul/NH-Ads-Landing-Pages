@@ -12,25 +12,33 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 export async function POST(request) {
-  const webhookUrl = process.env.GHL_WEBHOOK_URL;
-
-  if (!webhookUrl || webhookUrl.includes("PLACEHOLDER")) {
-    // Don't 500 in dev when the env var isn't set yet — make it obvious.
-    return Response.json(
-      {
-        ok: false,
-        error:
-          "GHL_WEBHOOK_URL is not configured. Set it in .env.local / Vercel env vars.",
-      },
-      { status: 503 }
-    );
-  }
-
   let body;
   try {
     body = await request.json();
   } catch {
     return Response.json({ ok: false, error: "Invalid JSON." }, { status: 400 });
+  }
+
+  // Route to the GHL webhook for the form's language.
+  //   en -> GHL_WEBHOOK_URL        (English workflow)
+  //   es -> GHL_WEBHOOK_URL_ES     (Spanish workflow), falls back to English.
+  const locale = String(body.locale || "en").toLowerCase();
+  const webhookUrl =
+    locale === "es"
+      ? process.env.GHL_WEBHOOK_URL_ES || process.env.GHL_WEBHOOK_URL
+      : process.env.GHL_WEBHOOK_URL;
+
+  if (!webhookUrl || webhookUrl.includes("PLACEHOLDER")) {
+    // Don't 500 when the env var isn't set yet — make it obvious.
+    return Response.json(
+      {
+        ok: false,
+        error: `Webhook for locale "${locale}" is not configured. Set ${
+          locale === "es" ? "GHL_WEBHOOK_URL_ES" : "GHL_WEBHOOK_URL"
+        } in Vercel env vars.`,
+      },
+      { status: 503 }
+    );
   }
 
   // Minimal server-side validation (the UI validates too).
@@ -68,7 +76,8 @@ export async function POST(request) {
     consent: Boolean(body.consent),
 
     // Lead source context
-    source: "MAC FL Lightweight LP",
+    source: locale === "es" ? "MAC FL Lightweight LP (ES)" : "MAC FL Lightweight LP (EN)",
+    locale,
     page_url: body.event_source_url || "",
     submitted_at: new Date().toISOString(),
 

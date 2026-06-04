@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { site } from "@/lib/site";
 import {
   collectMetaParams,
@@ -15,7 +15,7 @@ import { CheckIcon } from "@/components/Icons";
 //  2) fires the browser Meta Pixel "Lead" event with that event_id,
 //  3) POSTs the form data + Meta matching params to /api/lead → GHL webhook.
 // All state is in React (no localStorage / sessionStorage).
-export default function LeadForm() {
+export default function LeadForm({ copy = defaultCopy, locale = "en" }) {
   const f = copy.form;
   const fields = f.fields;
 
@@ -61,6 +61,7 @@ export default function LeadForm() {
     const payload = {
       ...values,
       name: fullName,
+      locale, // "en" | "es" — server picks the matching GHL webhook
       event_id: eventId,
       fbp: meta.fbp,
       fbc: meta.fbc,

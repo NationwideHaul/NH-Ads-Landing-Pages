@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { anchors } from "@/lib/site";
 import { ChevronDownIcon } from "@/components/Icons";
 import { scrollToForm } from "@/components/CTA";
 
 // SECTION 6 — FAQ. Conversational, first-person objection handling.
 // Accessible accordion (button + aria-expanded). First item open by default.
-export default function FAQ() {
+export default function FAQ({ copy = defaultCopy }) {
   const f = copy.faq;
   const [open, setOpen] = useState(0);
 

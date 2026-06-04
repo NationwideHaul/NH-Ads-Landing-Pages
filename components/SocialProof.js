@@ -1,9 +1,9 @@
 import Image from "next/image";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 
 // SECTION 4 — SOCIAL PROOF. Real Google reviews screenshot.
 // >>> To swap the image, replace /public/testimonial.jpg.
-export default function SocialProof() {
+export default function SocialProof({ copy = defaultCopy }) {
   const s = copy.socialProof;
   return (
     <section className="border-y border-brand-black/10 bg-white py-14">

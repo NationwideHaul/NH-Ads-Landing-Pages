@@ -1,12 +1,12 @@
 import Image from "next/image";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { anchors } from "@/lib/site";
 import LeadForm from "@/components/LeadForm";
 
 // SECTION 8 — ENDING (peak-end). Restates the future-self outcome with the dump
 // trailer, then the easiest next step (the form). The form carries the #talk
 // anchor that every primary CTA scrolls to, so the button lands right on it.
-export default function Ending() {
+export default function Ending({ copy = defaultCopy, locale = "en" }) {
   const e = copy.ending;
   return (
     <section className="section bg-brand-white">
@@ -37,7 +37,7 @@ export default function Ending() {
 
           {/* The easiest next step — the #talk scroll target lands here */}
           <div id={anchors.form} className="scroll-mt-28">
-            <LeadForm />
+            <LeadForm copy={copy} locale={locale} />
           </div>
         </div>
       </div>

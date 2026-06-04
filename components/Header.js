@@ -1,11 +1,11 @@
 import Image from "next/image";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { site } from "@/lib/site";
 import { PrimaryCTA } from "@/components/CTA";
 import { PhoneIcon } from "@/components/Icons";
 
 // Sticky top nav: logo + tap-to-call + the single primary CTA.
-export default function Header() {
+export default function Header({ copy = defaultCopy }) {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-black/10 bg-brand-white/90 backdrop-blur">
       <div className="container-page flex h-16 items-center justify-between gap-4">

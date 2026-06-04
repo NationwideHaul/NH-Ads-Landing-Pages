@@ -1,7 +1,7 @@
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 
 // Top strip: "WE F!NANCE ALL EQUIPMENT IN-HOUSE" with a slow shine sweep.
-export default function AnnouncementBar() {
+export default function AnnouncementBar({ copy = defaultCopy }) {
   return (
     <div className="relative overflow-hidden bg-brand-red text-brand-white">
       <div className="container-page flex items-center justify-center gap-2 py-2 text-center">

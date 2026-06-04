@@ -1,8 +1,8 @@
 import Image from "next/image";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 
 // Lightweight footer. Year is computed server-side at render.
-export default function Footer() {
+export default function Footer({ copy = defaultCopy }) {
   const year = new Date().getFullYear();
   return (
     <footer className="border-t border-brand-black/10 bg-white py-10">

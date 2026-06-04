@@ -1,10 +1,11 @@
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { anchors } from "@/lib/site";
 import { trailers, specTable } from "@/data/specs";
 
 // SECTION 5 — SPECS / CREDIBILITY. Clean side-by-side spec table.
-// Numbers come from /data/specs.js. Highlighted rows favor the lightweight.
-export default function SpecsTable() {
+// Numbers come from /data/specs.js. Row labels can be translated via
+// copy.specs.rowLabels (same order as specTable); falls back to the data label.
+export default function SpecsTable({ copy = defaultCopy }) {
   const s = copy.specs;
 
   return (
@@ -41,7 +42,7 @@ export default function SpecsTable() {
               }`}
             >
               <div className="px-4 py-4 text-sm font-medium text-brand-black sm:px-6">
-                {row.label}
+                {(s.rowLabels && s.rowLabels[i]) || row.label}
               </div>
               <div className="px-3 py-4 text-center text-sm text-brand-black/70">
                 {row.regular}

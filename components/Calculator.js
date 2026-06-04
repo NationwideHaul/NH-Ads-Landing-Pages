@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { anchors } from "@/lib/site";
 import { trailers, calculatorDefaults, calculatorBounds } from "@/data/specs";
 import {
@@ -16,7 +16,7 @@ import { scrollToForm } from "@/components/CTA";
 // SECTION 2 — THE COMPARISON CALCULATOR. Interactive centerpiece.
 // Buyer enters loads/week + revenue/load; outputs update live. Loss-framed
 // headline + payback period. Math is shown on expand for trust. Ends with CTA.
-export default function Calculator() {
+export default function Calculator({ copy = defaultCopy }) {
   const c = copy.calculator;
 
   const [loadsPerWeek, setLoadsPerWeek] = useState(

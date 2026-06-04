@@ -1,8 +1,8 @@
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { EdgeIcon } from "@/components/Icons";
 
 // SECTION 3 — THE NATIONWIDE HAUL EDGE. Value stack of 4. Icons + short copy.
-export default function Edge() {
+export default function Edge({ copy = defaultCopy }) {
   const e = copy.edge;
   return (
     <section className="section">

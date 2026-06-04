@@ -1,14 +1,14 @@
 "use client";
 
 import { useState } from "react";
-import { copy } from "@/copy/copy";
+import { copy as defaultCopy } from "@/copy/copy";
 import { oems } from "@/data/oems";
 import { CheckIcon } from "@/components/Icons";
 
 // AUTHORIZED DEALER band + infinite OEM logo carousel.
 // States our MAC dealership status, then auto-scrolls the OEM logos.
 // Each logo falls back to a styled name chip until a real image is dropped in.
-export default function OemMarquee() {
+export default function OemMarquee({ copy = defaultCopy }) {
   const o = copy.oem;
   // Duplicate the list so the marquee can loop seamlessly (-50%).
   const loop = [...oems, ...oems];
