@@ -1,17 +1,14 @@
 import { copy as defaultCopy } from "@/copy/copy";
 import { anchors } from "@/lib/site";
-import { trailers, specTable } from "@/data/specs";
 
 // SECTION 5 — SPECS / CREDIBILITY. Clean side-by-side spec table.
-// Numbers come from /data/specs.js. Row labels can be translated via
-// copy.specs.rowLabels (same order as specTable); falls back to the data label.
+// Rows come from copy.specs.table (per-language). Rows still marked TODO are
+// hidden so the live table never shows placeholders.
 export default function SpecsTable({ copy = defaultCopy }) {
   const s = copy.specs;
-  // Hide rows still marked TODO so the live table never shows placeholders.
-  // (Fill the real values in /data/specs.js and they appear automatically.)
-  const rows = specTable
-    .map((row, i) => ({ ...row, index: i }))
-    .filter((row) => !/TODO/i.test(`${row.regular} ${row.lightweight}`));
+  const rows = (s.table || []).filter(
+    (row) => !/TODO/i.test(`${row.regular} ${row.lightweight}`)
+  );
 
   return (
     <section id={anchors.specs} className="section">
@@ -28,7 +25,7 @@ export default function SpecsTable({ copy = defaultCopy }) {
           {/* Column header */}
           <div className="grid grid-cols-[1.4fr_1fr_1fr] bg-brand-black text-brand-white">
             <div className="px-4 py-4 text-sm font-semibold sm:px-6">
-              {trailers.regular.label.split("(")[0].trim()}
+              {s.modelHeading}
             </div>
             <div className="px-3 py-4 text-center text-sm font-semibold">
               {s.columnRegular}
@@ -41,13 +38,13 @@ export default function SpecsTable({ copy = defaultCopy }) {
           {/* Rows */}
           {rows.map((row, idx) => (
             <div
-              key={row.index}
+              key={idx}
               className={`grid grid-cols-[1.4fr_1fr_1fr] border-t border-brand-black/10 ${
                 idx % 2 === 1 ? "bg-brand-black/[0.02]" : ""
               }`}
             >
               <div className="px-4 py-4 text-sm font-medium text-brand-black sm:px-6">
-                {(s.rowLabels && s.rowLabels[row.index]) || row.label}
+                {row.label}
               </div>
               <div className="px-3 py-4 text-center text-sm text-brand-black/70">
                 {row.regular}

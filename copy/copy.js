@@ -178,11 +178,26 @@ export const copy = {
     eyebrow: "The numbers, side by side",
     heading: "MAC FL Standard vs. Lightweight",
     subheading:
-      "Same MAC build quality. The lightweight spec just gives more of every load back to you as payload.",
+      "Same MAC build quality, both rated 80,000 lbs GVWR. The lightweight spec gives more of every load back to you as payload.",
+    modelHeading: "MAC FL 24' Tri-Axle End Dump",
     columnRegular: "Standard",
     columnLightweight: "Lightweight",
+    // Visible comparison rows. highlight:true tints the row toward lightweight.
+    table: [
+      { label: "Price", regular: "$61,719", lightweight: "$67,719", highlight: false },
+      { label: "GVWR", regular: "80,000 lbs", lightweight: "80,000 lbs", highlight: false },
+      { label: "Frame", regular: "Steel frame", lightweight: "All-aluminum frame", highlight: true },
+      { label: "Wheels", regular: "Steel", lightweight: "Aluminum", highlight: true },
+      { label: "Empty weight (est.)", regular: "≈ 15,000 lbs", lightweight: "≈ 12,500 lbs", highlight: true },
+      { label: "Max legal payload (est.)", regular: "≈ 65,000 lbs", lightweight: "≈ 67,500 lbs", highlight: true },
+      { label: "Sidewall height", regular: "60 in", lightweight: "52 in", highlight: false },
+      { label: "Suspension", regular: "Spring (Hendrickson)", lightweight: "Spring (Hendrickson)", highlight: false },
+      { label: "Axle config", regular: "Tri-axle (2 + 1 lift)", lightweight: "Tri-axle (2 + 1 lift)", highlight: false },
+      { label: "Tires", regular: "11R22.5", lightweight: "11R22.5", highlight: false },
+      { label: "Length / width", regular: "24 ft / 96 in", lightweight: "24 ft / 96 in", highlight: false },
+    ],
     footnote:
-      "Specs shown for planning. Final spec sheet provided on quote. Payload figures assume legal GVWR limits.",
+      "Empty weight and max payload are estimates pending the final MAC spec sheet; your exact figures are confirmed on the quote. Both units rated 80,000 lbs GVWR. FET not included.",
   },
 
   // ---- 6. FAQ (objection handling, first-person) -------------------------

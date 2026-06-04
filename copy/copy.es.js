@@ -166,22 +166,25 @@ export const copy = {
     eyebrow: "Los números, lado a lado",
     heading: "MAC FL Estándar vs. Lightweight",
     subheading:
-      "La misma calidad de construcción MAC. El spec lightweight simplemente te devuelve más de cada viaje como payload.",
+      "La misma calidad de construcción MAC, ambos con 80,000 lbs de GVWR. El spec lightweight te devuelve más de cada viaje como payload.",
+    modelHeading: "Volteo MAC FL 24' Tri-Axle",
     columnRegular: "Estándar",
     columnLightweight: "Lightweight",
-    footnote:
-      "Especificaciones mostradas para planeación. La hoja final se entrega con la cotización. Las cifras de payload asumen límites legales de GVWR.",
-    // Mismo orden que specTable en /data/specs.js
-    rowLabels: [
-      "Peso vacío (tara)",
-      "Carga legal máxima",
-      "Largo de la caja",
-      "Capacidad (yardas cúbicas)",
-      "Material de la caja",
-      "Suspensión",
-      "Ejes",
-      "Garantía",
+    table: [
+      { label: "Precio", regular: "$61,719", lightweight: "$67,719", highlight: false },
+      { label: "GVWR", regular: "80,000 lbs", lightweight: "80,000 lbs", highlight: false },
+      { label: "Chasis", regular: "Chasis de acero", lightweight: "Chasis todo de aluminio", highlight: true },
+      { label: "Rines", regular: "Acero", lightweight: "Aluminio", highlight: true },
+      { label: "Peso vacío (est.)", regular: "≈ 15,000 lbs", lightweight: "≈ 12,500 lbs", highlight: true },
+      { label: "Carga legal máxima (est.)", regular: "≈ 65,000 lbs", lightweight: "≈ 67,500 lbs", highlight: true },
+      { label: "Altura de pared", regular: "60 in", lightweight: "52 in", highlight: false },
+      { label: "Suspensión", regular: "Resorte (Hendrickson)", lightweight: "Resorte (Hendrickson)", highlight: false },
+      { label: "Config. de ejes", regular: "Tri-eje (2 + 1 lift)", lightweight: "Tri-eje (2 + 1 lift)", highlight: false },
+      { label: "Llantas", regular: "11R22.5", lightweight: "11R22.5", highlight: false },
+      { label: "Largo / ancho", regular: "24 ft / 96 in", lightweight: "24 ft / 96 in", highlight: false },
     ],
+    footnote:
+      "El peso vacío y el payload máximo son estimados a falta de la hoja final de MAC; tus cifras exactas se confirman en la cotización. Ambas unidades con 80,000 lbs de GVWR. FET no incluido.",
   },
 
   // ---- 6. PREGUNTAS FRECUENTES -------------------------------------------
