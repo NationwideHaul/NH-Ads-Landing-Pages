@@ -45,8 +45,9 @@ function toEmbedUrl(url) {
   return url;
 }
 
-export default function VSLPlayer({ label }) {
-  const url = site.vslVideoUrl;
+// `url` overrides the env default (used to give each language its own video).
+export default function VSLPlayer({ label, url: urlProp }) {
+  const url = urlProp || site.vslVideoUrl;
   const frame =
     "relative aspect-video w-full overflow-hidden rounded-2xl bg-brand-black shadow-lg ring-1 ring-brand-black/10";
 

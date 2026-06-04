@@ -45,6 +45,8 @@ export const copy = {
       ", así que cada viaje carga más payload legal. A lo largo de una temporada de acarreo en Florida, ese payload extra se convierte directo en margen que te quedas.",
     primaryCta: "Conoce más con nuestro equipo",
     helperMicrocopy: "¡Respuestas el mismo día!",
+    // Video VSL del español (anula el default de inglés).
+    videoUrl: "https://www.youtube.com/watch?v=js0-fyrKGO8",
     videoLabel: "Mira: el MAC FL Lightweight en acción",
     presenterImageAlt:
       "Especialista de Nationwide Haul listo para responder tus preguntas",

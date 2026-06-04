@@ -44,7 +44,7 @@ export default function Hero({ copy = defaultCopy }) {
 
         {/* VSL video — directly AFTER the helper line, autoplaying (muted) */}
         <Reveal className="mx-auto mt-10 max-w-3xl" delay={120}>
-          <VSLPlayer label={h.videoLabel} />
+          <VSLPlayer label={h.videoLabel} url={h.videoUrl} />
         </Reveal>
       </div>
     </section>

@@ -52,6 +52,8 @@ export const copy = {
     primaryCta: "Learn more from our team",
     // Helper microcopy sits directly under the primary CTA.
     helperMicrocopy: "Same Day Answers!",
+    // VSL video. Empty = use NEXT_PUBLIC_VSL_VIDEO_URL (the English default).
+    videoUrl: "",
     videoLabel: "Watch: the MAC FL Lightweight in action",
     presenterImageAlt:
       "Nationwide Haul specialist ready to answer your questions",
