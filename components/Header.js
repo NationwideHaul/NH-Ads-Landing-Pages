@@ -8,16 +8,22 @@ import { PhoneIcon } from "@/components/Icons";
 export default function Header({ copy = defaultCopy }) {
   return (
     <header className="sticky top-0 z-50 border-b border-brand-black/10 bg-brand-white/90 backdrop-blur">
-      <div className="container-page flex h-16 items-center justify-between gap-4">
-        <a href="#top" aria-label={copy.nav.logoAlt} className="flex items-center">
+      <div className="container-page flex h-20 items-center justify-between gap-4">
+        <a
+          href="https://www.nationwidehaul.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={copy.nav.logoAlt}
+          className="flex items-center"
+        >
           <Image
             src="/nh-black.png"
             alt={copy.nav.logoAlt}
             width={1260}
             height={512}
             priority
-            sizes="240px"
-            className="h-12 w-auto sm:h-14"
+            sizes="300px"
+            className="h-14 w-auto sm:h-16"
           />
         </a>
 

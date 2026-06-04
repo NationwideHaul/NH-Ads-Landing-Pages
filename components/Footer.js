@@ -12,8 +12,8 @@ export default function Footer({ copy = defaultCopy }) {
           alt={copy.nav.logoAlt}
           width={1260}
           height={512}
-          sizes="160px"
-          className="mx-auto h-9 w-auto"
+          sizes="260px"
+          className="mx-auto h-14 w-auto sm:h-16"
         />
         <p className="mt-2 text-sm text-brand-black/60">
           {copy.footer.tagline}

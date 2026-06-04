@@ -7,6 +7,11 @@ import { trailers, specTable } from "@/data/specs";
 // copy.specs.rowLabels (same order as specTable); falls back to the data label.
 export default function SpecsTable({ copy = defaultCopy }) {
   const s = copy.specs;
+  // Hide rows still marked TODO so the live table never shows placeholders.
+  // (Fill the real values in /data/specs.js and they appear automatically.)
+  const rows = specTable
+    .map((row, i) => ({ ...row, index: i }))
+    .filter((row) => !/TODO/i.test(`${row.regular} ${row.lightweight}`));
 
   return (
     <section id={anchors.specs} className="section">
@@ -34,15 +39,15 @@ export default function SpecsTable({ copy = defaultCopy }) {
           </div>
 
           {/* Rows */}
-          {specTable.map((row, i) => (
+          {rows.map((row, idx) => (
             <div
-              key={i}
+              key={row.index}
               className={`grid grid-cols-[1.4fr_1fr_1fr] border-t border-brand-black/10 ${
-                i % 2 === 1 ? "bg-brand-black/[0.02]" : ""
+                idx % 2 === 1 ? "bg-brand-black/[0.02]" : ""
               }`}
             >
               <div className="px-4 py-4 text-sm font-medium text-brand-black sm:px-6">
-                {(s.rowLabels && s.rowLabels[i]) || row.label}
+                {(s.rowLabels && s.rowLabels[row.index]) || row.label}
               </div>
               <div className="px-3 py-4 text-center text-sm text-brand-black/70">
                 {row.regular}

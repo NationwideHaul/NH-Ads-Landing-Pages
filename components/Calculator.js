@@ -142,12 +142,18 @@ export default function Calculator({ copy = defaultCopy }) {
                   {c.outputs.extraRevenueLabel}
                 </p>
                 <p className="mt-1 text-5xl font-extrabold leading-none sm:text-6xl">
-                  {formatUSD(result.extraRevenuePerMonth)}
+                  {formatUSD(result.extraRevenuePerYear)}
+                </p>
+                <p className="mt-2 text-sm text-white/75">
+                  {c.outputs.perMonthNote.replace(
+                    "{amount}",
+                    formatUSD(result.extraRevenuePerMonth)
+                  )}
                 </p>
                 <p className="mt-5 text-2xl font-bold leading-tight">
                   {c.lossHeadline.replace(
                     "{amount}",
-                    formatUSD(result.extraRevenuePerMonth)
+                    formatUSD(result.extraRevenuePerYear)
                   )}
                 </p>
                 <p className="mt-3 text-white/85">{c.lossSubline}</p>

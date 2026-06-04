@@ -75,14 +75,15 @@ export const copy = {
     outputs: {
       extraPayloadLabel: "Payload legal extra por viaje",
       extraTonsLabel: "Toneladas extra al mes",
-      extraRevenueLabel: "Ingreso extra al mes",
+      extraRevenueLabel: "Ingreso extra al año",
+      perMonthNote: "≈ {amount}/mes",
       paybackLabel: "Periodo de recuperación de la inversión",
       paybackUnit: "meses",
       paybackNever:
         "Agrega tus viajes e ingreso arriba para ver el periodo de recuperación.",
     },
     lossHeadline:
-      "Estás dejando unos {amount}/mes en la carretera con un volteo estándar.",
+      "Estás dejando unos {amount}/año en la carretera con un volteo estándar.",
     lossSubline:
       "Son las mismas horas y el mismo diésel, solo que con menos payload en cada viaje.",
     formulaToggle: "¿Cómo se calcula?",

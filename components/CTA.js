@@ -11,7 +11,7 @@ export function scrollToForm(e) {
   if (!el) return;
   e.preventDefault();
 
-  const headerOffset = 96; // sticky announcement + nav
+  const headerOffset = 116; // sticky announcement + nav
   const jump = () =>
     window.scrollTo({
       top: el.getBoundingClientRect().top + window.pageYOffset - headerOffset,

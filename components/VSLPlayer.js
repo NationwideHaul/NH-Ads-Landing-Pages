@@ -1,5 +1,6 @@
 import { site } from "@/lib/site";
 import { PlayIcon } from "@/components/Icons";
+import VideoFacade from "@/components/VideoFacade";
 
 // Embedded VSL player. Reads NEXT_PUBLIC_VSL_VIDEO_URL and picks a renderer:
 //  • .mp4 / .webm  → native <video>
@@ -86,6 +87,12 @@ export default function VSLPlayer({ label, url: urlProp }) {
     );
   }
 
+  // YouTube → lightweight facade (fast load, click opens the video on YouTube).
+  if (isYouTube(url)) {
+    return <VideoFacade url={url} label={label} />;
+  }
+
+  // Other embeds (e.g. Vimeo) keep the iframe.
   return (
     <div className={frame}>
       <iframe

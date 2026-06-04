@@ -82,16 +82,17 @@ export const copy = {
     outputs: {
       extraPayloadLabel: "Extra legal payload per load",
       extraTonsLabel: "Extra tons moved per month",
-      extraRevenueLabel: "Extra revenue per month",
+      extraRevenueLabel: "Extra revenue per year",
+      perMonthNote: "≈ {amount}/month",
       paybackLabel: "Payback period on the upgrade",
       paybackUnit: "months",
       paybackNever:
         "Add your loads and revenue above to see the payback period.",
     },
     // The headline reframes the gap as money already being lost (loss aversion).
-    // "{amount}" is replaced at render with the live monthly figure.
+    // "{amount}" is replaced at render with the live ANNUAL figure.
     lossHeadline:
-      "You're leaving about {amount}/month on the road with a standard dump.",
+      "You're leaving about {amount}/year on the road with a standard dump.",
     lossSubline:
       "That is the same hours and the same diesel, just less payload on every load.",
     // Transparency builder, shown when the buyer expands "How is this figured?"
