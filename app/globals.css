@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-inter: "Inter", ui-sans-serif, system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    @apply bg-brand-white text-brand-black font-sans antialiased;
+  }
+
+  /* Respect users who prefer reduced motion. */
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  /* Visible focus ring for keyboard users (accessibility). */
+  :focus-visible {
+    @apply outline-none ring-2 ring-brand-red ring-offset-2 ring-offset-brand-white;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-content px-5 sm:px-6 lg:px-8;
+  }
+
+  /* Primary CTA — the single repeated conversion button. */
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl bg-brand-red px-7 py-4
+           text-base font-semibold text-brand-white shadow-sm transition
+           hover:brightness-110 active:translate-y-px
+           focus-visible:ring-2 focus-visible:ring-brand-red focus-visible:ring-offset-2;
+  }
+
+  /* Secondary CTA — for "ready" buyers. */
+  .btn-secondary {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border-2 border-brand-black/15
+           bg-transparent px-7 py-4 text-base font-semibold text-brand-black transition
+           hover:border-brand-red hover:text-brand-red active:translate-y-px;
+  }
+
+  .section {
+    @apply py-16 sm:py-20 lg:py-24;
+  }
+
+  .eyebrow {
+    @apply text-sm font-semibold uppercase tracking-wide text-brand-red;
+  }
+
+  /* Highlighter marker — draws itself in on load (and re-draws when revealed). */
+  .marker {
+    background-image: linear-gradient(
+      transparent 52%,
+      rgba(196, 16, 16, 0.32) 52%,
+      rgba(196, 16, 16, 0.32) 92%,
+      transparent 92%
+    );
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    padding: 0 0.08em;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    animation: marker-draw 0.9s ease 0.35s both;
+  }
+}
+
+@layer utilities {
+  /* Scroll-reveal — toggled by the <Reveal> client component.
+     Only hidden once JS is confirmed (html.js), so no-JS users see content. */
+  html.js .reveal {
+    opacity: 0;
+    transition: opacity 0.6s ease;
+    will-change: opacity;
+  }
+  html.js .reveal.is-visible {
+    opacity: 1;
+  }
+
+  @keyframes marker-draw {
+    from {
+      background-size: 0% 100%;
+    }
+    to {
+      background-size: 100% 100%;
+    }
+  }
+
+  /* Slow shine sweep for the announcement strip. */
+  @keyframes shine {
+    0% {
+      transform: translateX(-120%);
+    }
+    60%,
+    100% {
+      transform: translateX(220%);
+    }
+  }
+  .animate-shine {
+    animation: shine 5s ease-in-out infinite;
+  }
+
+  /* Infinite logo marquee (track holds the list twice; -50% loops seamlessly). */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+  .animate-marquee {
+    animation: marquee 28s linear infinite;
+  }
+  .marquee-pause:hover .animate-marquee {
+    animation-play-state: paused;
+  }
+
+  /* Gentle pulse for live/“switching” accents. */
+  @keyframes soft-pulse {
+    0%,
+    100% {
+      opacity: 1;
+      transform: scale(1);
+    }
+    50% {
+      opacity: 0.55;
+      transform: scale(0.82);
+    }
+  }
+  .animate-soft-pulse {
+    animation: soft-pulse 1.8s ease-in-out infinite;
+  }
+}
